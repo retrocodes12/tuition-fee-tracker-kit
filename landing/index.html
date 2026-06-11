@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Fee Tracker Setup for Tuition Teachers</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #17212b;
+        --muted: #586575;
+        --line: #d9e1ea;
+        --soft: #f4f7fa;
+        --brand: #145c43;
+        --brand-2: #e8f4ef;
+        --accent: #f2b705;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family:
+          Inter,
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+        color: var(--ink);
+        background: #ffffff;
+        line-height: 1.5;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .wrap {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .hero {
+        padding: 72px 0 56px;
+        background: linear-gradient(180deg, #ffffff 0%, var(--brand-2) 100%);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+        gap: 48px;
+        align-items: center;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        padding: 6px 10px;
+        border: 1px solid #b9d6ca;
+        border-radius: 999px;
+        color: var(--brand);
+        background: #ffffff;
+        font-weight: 700;
+        font-size: 13px;
+      }
+
+      h1 {
+        margin: 20px 0 16px;
+        font-size: clamp(42px, 7vw, 76px);
+        line-height: 0.96;
+        letter-spacing: 0;
+      }
+
+      .subtitle {
+        max-width: 680px;
+        color: var(--muted);
+        font-size: 21px;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        align-items: center;
+        margin-top: 28px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+        padding: 0 18px;
+        border-radius: 8px;
+        border: 1px solid var(--brand);
+        background: var(--brand);
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: 800;
+      }
+
+      .note {
+        color: var(--muted);
+      }
+
+      .sheet-preview {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #ffffff;
+        box-shadow: 0 20px 60px rgba(20, 92, 67, 0.12);
+        overflow: hidden;
+      }
+
+      .bar {
+        padding: 12px 14px;
+        background: #f7fafc;
+        border-bottom: 1px solid var(--line);
+        font-weight: 800;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        padding: 16px;
+      }
+
+      .stat {
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #ffffff;
+      }
+
+      .stat strong {
+        display: block;
+        font-size: 26px;
+      }
+
+      section {
+        padding: 56px 0;
+      }
+
+      h2 {
+        margin: 0 0 18px;
+        font-size: clamp(30px, 4vw, 48px);
+        line-height: 1;
+      }
+
+      .problem-list,
+      .features,
+      .pricing,
+      .steps,
+      .faq {
+        display: grid;
+        gap: 14px;
+      }
+
+      .features {
+        grid-template-columns: repeat(5, 1fr);
+      }
+
+      .pricing {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .item,
+      .price,
+      .faq-item {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 18px;
+        background: #ffffff;
+      }
+
+      .problem {
+        background: var(--soft);
+      }
+
+      .price.recommended {
+        border-color: var(--brand);
+        box-shadow: inset 0 0 0 2px var(--brand);
+      }
+
+      .price h3 {
+        margin: 0;
+        font-size: 24px;
+      }
+
+      .price ul,
+      .item p,
+      .faq-item p {
+        color: var(--muted);
+      }
+
+      .steps {
+        grid-template-columns: repeat(7, 1fr);
+        counter-reset: step;
+      }
+
+      .step {
+        border-top: 3px solid var(--accent);
+        padding-top: 12px;
+        color: var(--muted);
+      }
+
+      .step::before {
+        counter-increment: step;
+        content: counter(step);
+        display: block;
+        color: var(--brand);
+        font-weight: 900;
+        font-size: 28px;
+      }
+
+      .final {
+        background: var(--brand);
+        color: #ffffff;
+        text-align: center;
+      }
+
+      .final .button {
+        border-color: #ffffff;
+        background: #ffffff;
+        color: var(--brand);
+      }
+
+      @media (max-width: 900px) {
+        .hero-grid,
+        .features,
+        .pricing,
+        .steps {
+          grid-template-columns: 1fr;
+        }
+
+        h1 {
+          font-size: 48px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="eyebrow">Google Sheets setup for tuition teachers</span>
+          <h1>Fee Tracker Setup for Tuition Teachers</h1>
+          <p class="subtitle">
+            Know who paid, who is pending, and your total monthly collection in one simple Google Sheet.
+          </p>
+          <div class="actions">
+            <a class="button" href="https://wa.me/918590722156?text=Hi%2C%20I%20want%20to%20see%20the%20Tuition%20Fee%20Tracker%20demo." aria-label="Message on WhatsApp">Message on WhatsApp</a>
+            <span class="note">Custom setup for tuition teachers and small coaching centers. No app installation needed.</span>
+          </div>
+        </div>
+        <div class="sheet-preview" aria-label="Fee tracker preview">
+          <div class="bar">June 2026 Dashboard</div>
+          <div class="stats">
+            <div class="stat"><span>Total Collected</span><strong>₹18,100</strong></div>
+            <div class="stat"><span>Total Pending</span><strong>₹8,000</strong></div>
+            <div class="stat"><span>Paid Students</span><strong>8</strong></div>
+            <div class="stat"><span>Need Reminder</span><strong>10</strong></div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="problem">
+      <div class="wrap">
+        <h2>Still tracking tuition fees in a notebook or WhatsApp?</h2>
+        <div class="problem-list">
+          <div class="item">Who paid this month?</div>
+          <div class="item">Who still has pending fees?</div>
+          <div class="item">How much money was collected?</div>
+          <div class="item">Which students need a reminder?</div>
+          <div class="item">What does the monthly report look like?</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>Features</h2>
+        <div class="features">
+          <div class="item"><strong>Student Fee Tracking</strong><p>Add students, monthly fees, batches, and payment details in one place.</p></div>
+          <div class="item"><strong>Paid and Pending Dashboard</strong><p>See total collection, pending amount, paid students, and unpaid students instantly.</p></div>
+          <div class="item"><strong>WhatsApp Reminder Messages</strong><p>Get ready-to-copy reminder messages for students with pending fees.</p></div>
+          <div class="item"><strong>Monthly Report</strong><p>View month-wise collection and pending fee summary.</p></div>
+          <div class="item"><strong>Simple Setup</strong><p>No new app. No login. Works inside Google Sheets.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="problem">
+      <div class="wrap">
+        <h2>Pricing</h2>
+        <div class="pricing">
+          <div class="price">
+            <h3>Starter - ₹499</h3>
+            <ul><li>Basic student list</li><li>Payment tracker</li><li>Simple dashboard</li></ul>
+          </div>
+          <div class="price recommended">
+            <h3>Standard - ₹999</h3>
+            <p><strong>Recommended</strong></p>
+            <ul><li>Student list</li><li>Payment tracker</li><li>Dashboard</li><li>Pending list</li><li>WhatsApp reminder messages</li><li>One revision</li></ul>
+          </div>
+          <div class="price">
+            <h3>Pro - ₹1,999</h3>
+            <ul><li>Everything in Standard</li><li>Monthly report</li><li>Custom settings</li><li>Setup guidance</li><li>7 days support</li></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>How It Works</h2>
+        <div class="steps">
+          <div class="step">Message me on WhatsApp</div>
+          <div class="step">I show you the demo</div>
+          <div class="step">You send your student and fee details</div>
+          <div class="step">Pay 50% advance</div>
+          <div class="step">I customize the tracker</div>
+          <div class="step">Pay balance before final handover</div>
+          <div class="step">Start tracking fees easily</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="problem">
+      <div class="wrap">
+        <h2>FAQ</h2>
+        <div class="faq">
+          <div class="faq-item"><strong>Do I need to install any app?</strong><p>No. It works inside Google Sheets.</p></div>
+          <div class="faq-item"><strong>Can I use it on mobile?</strong><p>Yes, you can open it using the Google Sheets app.</p></div>
+          <div class="faq-item"><strong>Can it send WhatsApp messages automatically?</strong><p>No. It creates ready-to-copy messages. You can copy and send them manually.</p></div>
+          <div class="faq-item"><strong>Can you customize it for my classes?</strong><p>Yes. Student names, batch names, fees, and reminder text can be customized.</p></div>
+          <div class="faq-item"><strong>Is support included?</strong><p>One revision is included. Pro plan includes 7 days support.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="final">
+      <div class="wrap">
+        <h2>Want to stop guessing who paid and who is pending?</h2>
+        <a class="button" href="https://wa.me/918590722156?text=Hi%2C%20I%20want%20to%20see%20the%20Tuition%20Fee%20Tracker%20demo.">Message now to see the demo</a>
+      </div>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tuition Fee Tracker Working Animation</title>
+    <style>
+      :root {
+        --ink: #12202f;
+        --muted: #637081;
+        --line: #d9e2ec;
+        --paper: #ffffff;
+        --soft: #f4f8fb;
+        --green: #145c43;
+        --green-soft: #e8f4ef;
+        --yellow: #f2b705;
+        --red: #d94b3d;
+        --blue: #1f6feb;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        width: 1280px;
+        height: 720px;
+        overflow: hidden;
+        background: var(--soft);
+        color: var(--ink);
+        font-family:
+          Inter,
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+      }
+
+      .scene {
+        position: relative;
+        width: 1280px;
+        height: 720px;
+        padding: 44px 56px;
+      }
+
+      .brand {
+        position: absolute;
+        top: 28px;
+        left: 56px;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        font-weight: 900;
+        letter-spacing: 0;
+      }
+
+      .logo {
+        width: 34px;
+        height: 34px;
+        border-radius: 8px;
+        background: var(--green);
+        display: grid;
+        place-items: center;
+        color: #fff;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        min-height: 32px;
+        padding: 0 12px;
+        border: 1px solid #b9d6ca;
+        border-radius: 999px;
+        color: var(--green);
+        background: #fff;
+        font-weight: 800;
+        font-size: 14px;
+      }
+
+      .headline {
+        position: absolute;
+        top: 104px;
+        left: 56px;
+        width: 470px;
+      }
+
+      h1 {
+        margin: 12px 0 14px;
+        font-size: 54px;
+        line-height: 0.98;
+        letter-spacing: 0;
+      }
+
+      .sub {
+        color: var(--muted);
+        font-size: 22px;
+        line-height: 1.35;
+      }
+
+      .phone {
+        position: absolute;
+        right: 70px;
+        top: 84px;
+        width: 270px;
+        height: 550px;
+        border: 10px solid #0e1620;
+        border-radius: 34px;
+        background: #fff;
+        box-shadow: 0 24px 80px rgba(18, 32, 47, 0.22);
+        overflow: hidden;
+      }
+
+      .phone-head {
+        height: 62px;
+        padding: 18px;
+        font-weight: 900;
+        background: var(--green);
+        color: #fff;
+      }
+
+      .chat {
+        padding: 16px;
+        display: grid;
+        gap: 10px;
+      }
+
+      .bubble {
+        border-radius: 16px;
+        padding: 11px 12px;
+        font-size: 15px;
+        line-height: 1.25;
+      }
+
+      .bubble.in {
+        background: #eef2f6;
+        color: var(--ink);
+      }
+
+      .bubble.out {
+        background: var(--green);
+        color: #fff;
+      }
+
+      .sheet {
+        position: absolute;
+        left: 470px;
+        top: 102px;
+        width: 600px;
+        height: 478px;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: #fff;
+        box-shadow: 0 26px 90px rgba(18, 32, 47, 0.16);
+        overflow: hidden;
+      }
+
+      .sheet-top {
+        height: 50px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 0 16px;
+        border-bottom: 1px solid var(--line);
+        background: #f8fafc;
+        font-weight: 900;
+      }
+
+      .tabs {
+        display: flex;
+        gap: 6px;
+        padding: 10px 12px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .tab {
+        padding: 7px 10px;
+        border-radius: 8px;
+        background: #eef2f6;
+        font-size: 13px;
+        font-weight: 800;
+        color: #52606d;
+      }
+
+      .tab.active {
+        background: var(--green);
+        color: #fff;
+      }
+
+      .sheet-body {
+        position: relative;
+        padding: 18px;
+        height: 360px;
+      }
+
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      .card {
+        min-height: 90px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 14px;
+        background: #fff;
+      }
+
+      .card span {
+        display: block;
+        color: var(--muted);
+        font-weight: 800;
+        font-size: 14px;
+      }
+
+      .card strong {
+        display: block;
+        margin-top: 8px;
+        font-size: 30px;
+      }
+
+      .grid {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 15px;
+      }
+
+      .grid th {
+        text-align: left;
+        padding: 9px;
+        background: var(--green);
+        color: #fff;
+      }
+
+      .grid td {
+        padding: 9px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .status {
+        display: inline-block;
+        padding: 4px 8px;
+        border-radius: 999px;
+        font-weight: 900;
+        font-size: 12px;
+      }
+
+      .paid {
+        background: #e8f4ef;
+        color: var(--green);
+      }
+
+      .pending {
+        background: #fff3cd;
+        color: #8a6200;
+      }
+
+      .partial {
+        background: #e8f0ff;
+        color: var(--blue);
+      }
+
+      .overpaid {
+        background: #fdecea;
+        color: var(--red);
+      }
+
+      .menu {
+        position: absolute;
+        top: 66px;
+        left: 18px;
+        width: 235px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: #fff;
+        box-shadow: 0 18px 48px rgba(18, 32, 47, 0.18);
+        overflow: hidden;
+      }
+
+      .menu div {
+        padding: 10px 13px;
+        border-bottom: 1px solid var(--line);
+        font-weight: 800;
+        font-size: 14px;
+      }
+
+      .menu div.active {
+        background: var(--green-soft);
+        color: var(--green);
+      }
+
+      .flow {
+        position: absolute;
+        left: 56px;
+        bottom: 58px;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 12px;
+        width: 780px;
+      }
+
+      .step {
+        min-height: 80px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: #fff;
+        padding: 12px;
+        font-weight: 900;
+      }
+
+      .step small {
+        display: block;
+        margin-top: 4px;
+        color: var(--muted);
+        font-weight: 700;
+      }
+
+      .badge {
+        position: absolute;
+        right: 54px;
+        bottom: 42px;
+        width: 360px;
+        padding: 20px;
+        border-radius: 12px;
+        background: var(--green);
+        color: #fff;
+      }
+
+      .badge strong {
+        display: block;
+        font-size: 30px;
+      }
+
+      .cursor {
+        position: absolute;
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        background: var(--yellow);
+        box-shadow: 0 0 0 8px rgba(242, 183, 5, 0.25);
+        transform: translate(-50%, -50%);
+      }
+
+      [data-part] {
+        opacity: 0;
+        transform: translateY(18px);
+        transition:
+          opacity 0.2s linear,
+          transform 0.2s linear;
+      }
+
+      .show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="scene">
+      <div class="brand"><div class="logo">FT</div> Tuition Fee Tracker</div>
+
+      <section class="headline" data-part="hero">
+        <span class="pill">Google Sheets + Apps Script</span>
+        <h1>Track tuition fees without notebook chaos.</h1>
+        <p class="sub">One sheet shows students, payments, pending dues, WhatsApp reminders, and monthly reports.</p>
+      </section>
+
+      <section class="sheet" data-part="sheet">
+        <div class="sheet-top">Fee Tracker <span class="pill">Demo Mode</span></div>
+        <div class="tabs">
+          <div class="tab" id="tabStudents">Students</div>
+          <div class="tab active" id="tabDashboard">Dashboard</div>
+          <div class="tab" id="tabPending">Pending</div>
+          <div class="tab" id="tabReports">Reports</div>
+        </div>
+        <div class="sheet-body">
+          <div class="menu" data-part="menu">
+            <div>Fee Tracker menu</div>
+            <div class="active" id="menuAction">Setup Demo Workbook</div>
+            <div>Add Payment Entry</div>
+            <div>Generate Pending List</div>
+            <div>Monthly Report</div>
+          </div>
+
+          <div id="dashboard" data-view="dashboard">
+            <div class="cards">
+              <div class="card"><span>Total Collected</span><strong>Rs 18,100</strong></div>
+              <div class="card"><span>Total Pending</span><strong>Rs 8,000</strong></div>
+              <div class="card"><span>Paid Students</span><strong>8</strong></div>
+              <div class="card"><span>Need Reminder</span><strong>10</strong></div>
+            </div>
+          </div>
+
+          <div id="students" data-view="students" hidden>
+            <table class="grid">
+              <tr><th>Student</th><th>Batch</th><th>Fee</th><th>Status</th></tr>
+              <tr><td>Aarav Nair</td><td>Class 8 Maths</td><td>Rs 1000</td><td>Active</td></tr>
+              <tr><td>Ananya Menon</td><td>Class 9 Science</td><td>Rs 1200</td><td>Active</td></tr>
+              <tr><td>Rohan Sharma</td><td>Class 10 Maths</td><td>Rs 1500</td><td>Active</td></tr>
+              <tr><td>Meera Iyer</td><td>Plus One Commerce</td><td>Rs 1800</td><td>Active</td></tr>
+            </table>
+          </div>
+
+          <div id="pending" data-view="pending" hidden>
+            <table class="grid">
+              <tr><th>Student</th><th>Paid</th><th>Pending</th><th>Message</th></tr>
+              <tr><td>Kabir Khan</td><td>Rs 0</td><td>Rs 900</td><td><span class="status pending">Copy reminder</span></td></tr>
+              <tr><td>Pooja Singh</td><td>Rs 500</td><td>Rs 500</td><td><span class="status partial">Copy reminder</span></td></tr>
+              <tr><td>Aditya Bose</td><td>Rs 0</td><td>Rs 1800</td><td><span class="status pending">Copy reminder</span></td></tr>
+            </table>
+          </div>
+
+          <div id="reports" data-view="reports" hidden>
+            <table class="grid">
+              <tr><th>Month</th><th>Expected</th><th>Collected</th><th>Pending</th></tr>
+              <tr><td>May 2026</td><td>Rs 26,200</td><td>Rs 23,650</td><td>Rs 2,550</td></tr>
+              <tr><td>June 2026</td><td>Rs 26,100</td><td>Rs 18,100</td><td>Rs 8,000</td></tr>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="phone" data-part="phone">
+        <div class="phone-head">WhatsApp reminder</div>
+        <div class="chat">
+          <div class="bubble in">Hi, fee for Kabir for June has pending amount Rs 900.</div>
+          <div class="bubble out">Copy message from Pending tab and send manually.</div>
+          <div class="bubble in">Simple. No automatic sending.</div>
+        </div>
+      </section>
+
+      <section class="flow" data-part="flow">
+        <div class="step">1. Setup<small>Creates tabs + demo data</small></div>
+        <div class="step">2. Students<small>Add batches and fees</small></div>
+        <div class="step">3. Payments<small>Paid, partial, pending</small></div>
+        <div class="step">4. Reminders<small>Copy WhatsApp text</small></div>
+        <div class="step">5. Report<small>Monthly summary</small></div>
+      </section>
+
+      <section class="badge" data-part="cta">
+        <strong>Ready for first paid demo</strong>
+        Standard setup: Rs 999. Collect Rs 500 advance before customization.
+      </section>
+
+      <div class="cursor" id="cursor"></div>
+    </main>
+
+    <script>
+      const params = new URLSearchParams(location.search);
+      const t = Number(params.get('t') || 0);
+
+      const show = (name, start, end = 999) => {
+        const el = document.querySelector(`[data-part="${name}"]`);
+        if (t >= start && t < end) el.classList.add('show');
+      };
+
+      show('hero', 0, 34);
+      show('sheet', 3, 999);
+      show('menu', 5, 12);
+      show('flow', 12, 999);
+      show('phone', 18, 999);
+      show('cta', 28, 999);
+
+      const views = ['dashboard', 'students', 'pending', 'reports'];
+      const tabs = {
+        dashboard: 'tabDashboard',
+        students: 'tabStudents',
+        pending: 'tabPending',
+        reports: 'tabReports',
+      };
+      const view =
+        t < 10 ? 'dashboard' :
+        t < 15 ? 'students' :
+        t < 23 ? 'dashboard' :
+        t < 29 ? 'pending' :
+        t < 34 ? 'reports' :
+        'dashboard';
+
+      views.forEach((name) => {
+        document.getElementById(name).hidden = name !== view;
+        document.getElementById(tabs[name]).classList.toggle('active', name === view);
+      });
+
+      const menuAction = document.getElementById('menuAction');
+      if (t >= 10 && t < 15) menuAction.textContent = 'Add Payment Entry';
+      if (t >= 23 && t < 29) menuAction.textContent = 'Generate Pending List';
+      if (t >= 29) menuAction.textContent = 'Generate Monthly Report';
+
+      const points = [
+        [0, 620, 580],
+        [6, 520, 190],
+        [11, 540, 250],
+        [16, 740, 240],
+        [23, 930, 180],
+        [29, 925, 270],
+        [34, 995, 610],
+      ];
+
+      let a = points[0];
+      let b = points[points.length - 1];
+      for (let i = 0; i < points.length - 1; i++) {
+        if (t >= points[i][0] && t <= points[i + 1][0]) {
+          a = points[i];
+          b = points[i + 1];
+          break;
+        }
+      }
+      const span = Math.max(1, b[0] - a[0]);
+      const p = Math.min(1, Math.max(0, (t - a[0]) / span));
+      const ease = p * p * (3 - 2 * p);
+      const x = a[1] + (b[1] - a[1]) * ease;
+      const y = a[2] + (b[2] - a[2]) * ease;
+      const cursor = document.getElementById('cursor');
+      cursor.style.left = `${x}px`;
+      cursor.style.top = `${y}px`;
+    </script>
+  </body>
+</html>

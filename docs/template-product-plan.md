@@ -55,7 +55,7 @@ Short description:
 Track student fees, pending payments, monthly collection, and WhatsApp reminder messages in one simple Google Sheet.
 
 Long description:
-This template is made for tuition teachers and small coaching centers who currently track fees in notebooks, WhatsApp, or basic Excel files. It helps you see who paid, who is pending, how much was collected, and which students need reminders.
+This template is made for tuition centers and small coaching centers who currently track fees in notebooks, WhatsApp, or basic Excel files. It helps you see who paid, who is pending, how much was collected, and which students need reminders.
 
 Includes:
 
@@ -87,7 +87,7 @@ Customization is not included in template price. Buyers can purchase setup servi
 
 ## Upsells
 
-- Setup service: seller replaces sample data with teacher data.
+- Setup service: seller replaces sample data with center data.
 - Customization: custom batches, fees, colors, message text.
 - Monthly report automation: improved reporting and printable monthly summary.
 - Multi-branch version: separate dashboard by branch/location.

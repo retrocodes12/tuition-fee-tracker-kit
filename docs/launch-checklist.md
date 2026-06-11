@@ -135,7 +135,7 @@ Goal:
 ### First Message
 
 ```text
-Hi, I made a simple fee tracker for tuition teachers.
+Hi, I made a simple fee tracker for tuition centers.
 
 It shows:
 - who is pending
@@ -143,7 +143,7 @@ It shows:
 - who paid
 - ready-to-copy WhatsApp reminder messages
 
-I’m setting it up for a few teachers for ₹999. I can show you a demo. Would this be useful for your classes?
+I’m setting it up for a few centers for ₹999. I can show you a demo. Would this be useful for your classes?
 ```
 
 ### When They Ask Price
@@ -255,7 +255,7 @@ Please do not edit formula/header rows unless needed.
 
 One revision is included within 7 days.
 
-If this is useful, please send a small feedback message. Also, if you know another teacher who needs this, please share my contact.
+If this is useful, please send a small feedback message. Also, if you know another center who needs this, please share my contact.
 ```
 
 ## Do Not Do Now

@@ -1,6 +1,6 @@
 # Tuition Fee Tracker Kit
 
-Google Sheets + Apps Script product for tuition teachers and small coaching centers.
+Google Sheets + Apps Script product for tuition centers and small coaching centers.
 
 Target first paid offer: `₹999` setup. It tracks students, monthly fees, paid/partial/pending/overpaid status, collection totals, pending dues, WhatsApp reminder text, and monthly reports.
 

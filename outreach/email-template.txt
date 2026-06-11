@@ -1,0 +1,23 @@
+Subject: Simple fee tracker setup for your tuition centre
+
+Hi,
+
+I made a simple Google Sheets fee tracker for tuition/coaching centres in Kerala.
+
+It helps you see:
+- who paid this month
+- who is pending
+- total monthly collection
+- ready-to-copy WhatsApp reminder messages
+- monthly report
+
+No new app is needed. It works inside Google Sheets.
+
+I’m setting it up for a few centres for ₹999.
+Demo: https://retrocodes12.github.io/tuition-fee-tracker-kit/landing/
+
+Would this be useful for your centre? I can show a quick demo.
+
+Regards,
+Sohil
+WhatsApp: 8590722156

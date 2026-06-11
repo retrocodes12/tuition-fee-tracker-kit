@@ -4,6 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>DuesFlow for Tuition Centers</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicons/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicons/apple-touch-icon.png" />
+    <link rel="manifest" href="../site.webmanifest" />
     <style>
       :root {
         color-scheme: light;
@@ -59,6 +63,8 @@
 
       .eyebrow {
         display: inline-flex;
+        gap: 8px;
+        align-items: center;
         padding: 6px 10px;
         border: 1px solid #b9d6ca;
         border-radius: 999px;
@@ -66,6 +72,13 @@
         background: #ffffff;
         font-weight: 700;
         font-size: 13px;
+      }
+
+      .brand-mark {
+        width: 22px;
+        height: 22px;
+        border-radius: 6px;
+        object-fit: cover;
       }
 
       h1 {
@@ -247,7 +260,7 @@
     <header class="hero">
       <div class="wrap hero-grid">
         <div>
-          <span class="eyebrow">Google Sheets setup for tuition centers</span>
+          <span class="eyebrow"><img class="brand-mark" src="../assets/favicons/favicon-32x32.png" alt="" /> Google Sheets setup for tuition centers</span>
           <h1>DuesFlow for Tuition Centers</h1>
           <p class="subtitle">
             Know who paid, who is pending, and your total monthly collection in one simple Google Sheet.

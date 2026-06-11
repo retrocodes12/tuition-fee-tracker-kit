@@ -20,7 +20,7 @@ Run this on a clean Google Sheet:
 4. Add `src/appsscript.json` manifest if needed.
 5. Save.
 6. Reload the Sheet.
-7. Confirm `Fee Tracker` custom menu appears.
+7. Confirm `DuesFlow` custom menu appears.
 8. Run `Setup Demo Workbook`.
 9. Run every menu item once.
 10. Confirm no user data is deleted unexpectedly.
@@ -135,7 +135,7 @@ Goal:
 ### First Message
 
 ```text
-Hi, I made a simple fee tracker for tuition centers.
+Hi, I made DuesFlow, a simple fee collection tracker for tuition centers.
 
 It shows:
 - who is pending
@@ -151,7 +151,7 @@ I’m setting it up for a few centers for ₹999. I can show you a demo. Would t
 ```text
 The Standard setup is ₹999.
 
-It includes student list, fee tracker, dashboard, pending list, WhatsApp reminder messages, and monthly report.
+It includes student list, payment tracker, dashboard, pending list, WhatsApp reminder messages, and monthly report.
 
 I take ₹500 advance before customization and ₹499 before final handover. I can show you the demo first.
 ```
@@ -178,7 +178,7 @@ You can pay by UPI here: [YOUR UPI ID / QR]
 Keep the demo under 2 minutes.
 
 ```text
-This is made for tuition fee tracking.
+This is made for fee collection tracking.
 
 Here you can see all students and their monthly fee.
 
@@ -232,7 +232,7 @@ Final handover only after full payment.
 ## Handover Message
 
 ```text
-Your Tuition Fee Tracker is ready.
+Your DuesFlow setup is ready.
 
 Link: [GOOGLE SHEET LINK]
 
@@ -246,7 +246,7 @@ Set up completed:
 
 How to use:
 1. Add new students in the Students tab.
-2. Add payments using the Fee Tracker menu.
+2. Add payments using the DuesFlow menu.
 3. Click Refresh Dashboard to update totals.
 4. Open Pending tab to see unpaid/partial students.
 5. Copy WhatsApp messages and send manually.

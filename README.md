@@ -1,4 +1,4 @@
-# Tuition Fee Tracker Kit
+# DuesFlow Kit
 
 Google Sheets + Apps Script product for tuition centers and small coaching centers.
 
@@ -24,7 +24,7 @@ Target first paid offer: `₹999` setup. It tracks students, monthly fees, paid/
 4. Copy `src/appsscript.json` into project settings manifest if needed.
 5. Save project.
 6. Reload Google Sheet.
-7. Use `Fee Tracker > Setup Demo Workbook`.
+7. Use `DuesFlow > Setup Demo Workbook`.
 
 ## First-Run Authorization
 

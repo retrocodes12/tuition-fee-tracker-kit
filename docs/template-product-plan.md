@@ -45,11 +45,11 @@ Use a `README` tab with:
 - Payments tab with status examples
 - Pending tab with WhatsApp messages
 - Monthly report tab
-- Fee Tracker menu
+- DuesFlow menu
 
 ## Gumroad / Marketplace Description
 
-Title: Tuition Fee Tracker Google Sheets Template
+Title: DuesFlow Google Sheets Template
 
 Short description:
 Track student fees, pending payments, monthly collection, and WhatsApp reminder messages in one simple Google Sheet.

@@ -102,7 +102,7 @@ const DEMO_STUDENTS = [
 
 function onOpen() {
   SpreadsheetApp.getUi()
-    .createMenu('Fee Tracker')
+    .createMenu('DuesFlow')
     .addItem('Setup Demo Workbook', 'setupDemoWorkbook')
     .addSeparator()
     .addItem('Add Payment Entry', 'addPaymentEntry')
@@ -132,7 +132,7 @@ function setupDemoWorkbook() {
     generateMonthlyReport();
     protectImportantRanges();
     logAction('Setup Demo Workbook', 'Success', 'Demo workbook created or refreshed.');
-    SpreadsheetApp.getUi().alert('Fee Tracker setup complete.');
+    SpreadsheetApp.getUi().alert('DuesFlow setup complete.');
   } catch (error) {
     logAction('Setup Demo Workbook', 'Error', error.message);
     SpreadsheetApp.getUi().alert('Setup failed: ' + error.message);
@@ -149,17 +149,17 @@ function createReadmeSheet() {
   const sheet = getOrCreateSheet(SHEETS.README);
   sheet.clear();
   const rows = [
-    ['Tuition Fee Tracker - Simple Guide'],
+    ['DuesFlow - Simple Guide'],
     ['What this tracker does'],
     ['Tracks students, monthly fees, paid/pending status, pending reminders, and monthly reports.'],
     ['How to add students'],
     ['Go to Students tab. Add a new row with Student ID, name, phone number, batch, monthly fee, and Active status.'],
     ['How to enter payments'],
-    ['Use Fee Tracker > Add Payment Entry. Enter student name, month, year, amount paid, payment mode, payment date, and notes.'],
+    ['Use DuesFlow > Add Payment Entry. Enter student name, month, year, amount paid, payment mode, payment date, and notes.'],
     ['How to refresh dashboard'],
-    ['Use Fee Tracker > Refresh Dashboard. It uses Report Month and Report Year from Config.'],
+    ['Use DuesFlow > Refresh Dashboard. It uses Report Month and Report Year from Config.'],
     ['How to check pending fees'],
-    ['Use Fee Tracker > Generate Pending List. Pending and partial payments appear in Pending tab.'],
+    ['Use DuesFlow > Generate Pending List. Pending and partial payments appear in Pending tab.'],
     ['How to copy WhatsApp messages'],
     ['Open Pending tab, copy the WhatsApp Message cell, and send manually. This tracker does not send messages automatically.'],
     ['First-run Google authorization'],
@@ -198,7 +198,7 @@ function createConfigSheet() {
       ['Report Month', 'June', 'Dashboard month'],
       ['Report Year', 2026, 'Dashboard year'],
       ['Reminder Message Language', 'English', 'English in V1'],
-      ['WhatsApp Reminder Prefix', 'Hi, this is a gentle reminder that the tuition fee for', 'Prefix used in generated messages'],
+      ['WhatsApp Reminder Prefix', 'Hi, this is a gentle reminder that the fee for', 'Prefix used in generated messages'],
       ['WhatsApp Reminder Closing', 'Kindly clear it when possible. Thank you', 'Closing used in generated messages'],
       ['Support Contact', 'Your WhatsApp number here', 'Seller support contact'],
     ];
@@ -245,7 +245,7 @@ function createPaymentsSheet() {
 function createDashboardSheet() {
   const sheet = getOrCreateSheet(SHEETS.DASHBOARD);
   sheet.clear();
-  sheet.getRange('A1').setValue('Tuition Fee Dashboard').setFontSize(18).setFontWeight('bold');
+  sheet.getRange('A1').setValue('DuesFlow Dashboard').setFontSize(18).setFontWeight('bold');
   sheet.getRange('A3:B13').setValues([
     ['Business Name', ''],
     ['Report Month/Year', ''],
@@ -302,7 +302,7 @@ function createMessageTemplatesSheet() {
       ['Template Name', 'Message Text'],
       [
         'Default Reminder',
-        'Hi, this is a gentle reminder that the tuition fee for {{studentName}} for {{month}} {{year}} has a pending amount of {{currency}}{{pendingAmount}}. Kindly clear it when possible. Thank you, {{businessName}}.',
+        'Hi, this is a gentle reminder that the fee for {{studentName}} for {{month}} {{year}} has a pending amount of {{currency}}{{pendingAmount}}. Kindly clear it when possible. Thank you, {{businessName}}.',
       ],
     ]);
   }
@@ -840,7 +840,7 @@ function getReminderTemplate() {
       return values[i][1];
     }
   }
-  return 'Hi, this is a gentle reminder that the tuition fee for {{studentName}} for {{month}} {{year}} has a pending amount of {{currency}}{{pendingAmount}}. Kindly clear it when possible. Thank you, {{businessName}}.';
+  return 'Hi, this is a gentle reminder that the fee for {{studentName}} for {{month}} {{year}} has a pending amount of {{currency}}{{pendingAmount}}. Kindly clear it when possible. Thank you, {{businessName}}.';
 }
 
 function monthNumber(monthName) {
@@ -900,13 +900,13 @@ function deleteRowsByNote(sheetName, noteColumn, noteValue) {
 
 function protectImportantRanges() {
   const targets = [
-    { sheet: SHEETS.README, range: 'A1:A1', description: 'Fee Tracker warning - README title' },
-    { sheet: SHEETS.CONFIG, range: 'A1:C1', description: 'Fee Tracker warning - Config headers' },
-    { sheet: SHEETS.STUDENTS, range: 'A1:H1', description: 'Fee Tracker warning - Students headers' },
-    { sheet: SHEETS.PAYMENTS, range: 'A1:L1', description: 'Fee Tracker warning - Payments headers' },
-    { sheet: SHEETS.DASHBOARD, range: 'A:I', description: 'Fee Tracker warning - Dashboard' },
-    { sheet: SHEETS.PENDING, range: 'A:K', description: 'Fee Tracker warning - Pending' },
-    { sheet: SHEETS.REPORTS, range: 'A:I', description: 'Fee Tracker warning - Reports' },
+    { sheet: SHEETS.README, range: 'A1:A1', description: 'DuesFlow warning - README title' },
+    { sheet: SHEETS.CONFIG, range: 'A1:C1', description: 'DuesFlow warning - Config headers' },
+    { sheet: SHEETS.STUDENTS, range: 'A1:H1', description: 'DuesFlow warning - Students headers' },
+    { sheet: SHEETS.PAYMENTS, range: 'A1:L1', description: 'DuesFlow warning - Payments headers' },
+    { sheet: SHEETS.DASHBOARD, range: 'A:I', description: 'DuesFlow warning - Dashboard' },
+    { sheet: SHEETS.PENDING, range: 'A:K', description: 'DuesFlow warning - Pending' },
+    { sheet: SHEETS.REPORTS, range: 'A:I', description: 'DuesFlow warning - Reports' },
   ];
   targets.forEach(function (target) {
     const sheet = getOrCreateSheet(target.sheet);

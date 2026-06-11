@@ -1,8 +1,8 @@
-Subject: Simple fee tracker setup for your tuition centre
+Subject: DuesFlow setup for your tuition centre
 
 Hi,
 
-I made a simple Google Sheets fee tracker for tuition/coaching centres in Kerala.
+I made DuesFlow, a simple Google Sheets fee collection tracker for tuition/coaching centres in Kerala.
 
 It helps you see:
 - who paid this month

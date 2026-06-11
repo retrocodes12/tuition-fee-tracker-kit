@@ -2,7 +2,7 @@
 
 ## Demo Message
 
-Hi, I have prepared a simple Google Sheets fee tracker for tuition classes.
+Hi, I have prepared DuesFlow, a simple Google Sheets fee collection tracker for tuition and coaching centres.
 
 It helps you see:
 
@@ -36,7 +36,7 @@ After advance, send:
 
 ## Final Delivery Message
 
-Your fee tracker is ready.
+Your DuesFlow setup is ready.
 
 Please check:
 
@@ -76,7 +76,7 @@ Revision does not include:
 
 ## Invoice Text
 
-Service: Google Sheets Tuition Fee Tracker Setup
+Service: DuesFlow Google Sheets Setup
 
 Amount: ₹999
 

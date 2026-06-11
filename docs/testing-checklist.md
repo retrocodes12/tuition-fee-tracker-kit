@@ -3,7 +3,7 @@
 | Test Case | Action | Expected Result | Status |
 | --- | --- | --- | --- |
 | Blank setup | Run `Setup Demo Workbook` on a new Sheet | All tabs created with headers and demo data |  |
-| Menu load | Open/reload Google Sheet | `Fee Tracker` menu appears |  |
+| Menu load | Open/reload Google Sheet | `DuesFlow` menu appears |  |
 | Config fallback | Delete one Config value and refresh | System uses safe default |  |
 | Dashboard refresh | Click `Refresh Dashboard` | Correct totals shown for selected month/year |  |
 | Pending generation | Click `Generate Pending List` | Only Pending and Partial students appear |  |
